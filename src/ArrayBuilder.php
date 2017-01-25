@@ -54,6 +54,10 @@ class ArrayBuilder
             $this->buildOrderBy($query, $arrayQuery['order']);
         }
 
+        if (isset($arrayQuery['groupby'])) {
+            $this->buildgroupBy($query, $arrayQuery['groupby']);
+        }
+
         return $query;
     }
 
@@ -187,6 +191,16 @@ class ArrayBuilder
 
         $queryBuilder->orderBy($orderBy, $orderDirection);
     }
+
+    /**
+     * @param Builder|QueryBuilder $queryBuilder
+     * @param array|string $columns
+     */
+    protected function buildgroupBy($queryBuilder, $columns)
+    {
+        $queryBuilder->groupBy($columns);
+    }
+    
 
     /**
      * @param Builder $queryBuilder
