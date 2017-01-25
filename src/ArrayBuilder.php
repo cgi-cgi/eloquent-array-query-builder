@@ -55,7 +55,7 @@ class ArrayBuilder
         }
 
         if (isset($arrayQuery['groupby'])) {
-            $this->buildgroupBy($query, $arrayQuery['groupby']);
+            $this->buildGroupBy($query, $arrayQuery['groupby']);
         }
 
         return $query;
@@ -196,11 +196,10 @@ class ArrayBuilder
      * @param Builder|QueryBuilder $queryBuilder
      * @param array|string $columns
      */
-    protected function buildgroupBy($queryBuilder, $columns)
+    protected function buildGroupBy($queryBuilder, $columns)
     {
         $queryBuilder->groupBy($columns);
     }
-    
 
     /**
      * @param Builder $queryBuilder
