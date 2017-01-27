@@ -50,12 +50,12 @@ class ArrayBuilder
             $this->buildFields($query, $arrayQuery['fields']);
         }
 
-        if (isset($arrayQuery['order'])) {
-            $this->buildOrderBy($query, $arrayQuery['order']);
+        if (isset($arrayQuery['order_by'])) {
+            $this->buildOrderBy($query, $arrayQuery['order_by']);
         }
 
-        if (isset($arrayQuery['groupby'])) {
-            $this->buildGroupBy($query, $arrayQuery['groupby']);
+        if (isset($arrayQuery['group_by'])) {
+            $this->buildGroupBy($query, $arrayQuery['group_by']);
         }
 
         return $query;
@@ -214,7 +214,7 @@ class ArrayBuilder
             // If it's a single dimension array the key will be numeric
             $includeName = is_numeric($includeName) ? $include : $includeName;
 
-            if (empty($include['where']) && empty($include['fields']) && empty($include['order'])) {
+            if (empty($include['where']) && empty($include['fields']) && empty($include['order_by'])) {
                 $builtIncludes[] = $includeName;
                 continue;
             }
@@ -229,8 +229,8 @@ class ArrayBuilder
                     $this->buildFields($query, $include['fields']);
                 }
 
-                if (isset($include['order'])) {
-                    $this->buildOrderBy($query, $include['order']);
+                if (isset($include['order_by'])) {
+                    $this->buildOrderBy($query, $include['order_by']);
                 }
             };
         }
